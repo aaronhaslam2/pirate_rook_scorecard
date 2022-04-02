@@ -1,15 +1,56 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header>
+    <div id="title">
+      <div id="logo">
+        <img src='./assets/logo.png' style="height: 6em;"/>
+      </div>
+      <div id="words">
+        <h1>Pirate</h1>
+        <h1>Rook</h1>
+      </div>
+    </div>
+    <PointTable id="pointtable" @click="toggleLargePointTable"/>
+  </header>
+  <body>
+    <ScoreTable/>
+    <ScoreTable/>
+  </body>
+  <footer>
+    <h2>Official Pirate Rook Scorecard</h2>
+  </footer>
+
+  <LargePointTable v-if="showLargePointTable" @close="toggleLargePointTable"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PointTable from './components/PointTable.vue'
+import LargePointTable from './components/LargePointTable.vue'
+import ScoreTable from './components/ScoreTable.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PointTable,
+    LargePointTable,
+    ScoreTable,
+  },
+  data(){
+    return{
+      showLargePointTable: false,
+      team1: {name: "Team 1", total: 6, history: [1,2,3]},
+      team2: {name: "Team 2", total: 6, history: [1,2,3]},
+    }
+  },
+  methods: {
+    toggleLargePointTable(){
+      this.showLargePointTable = !this.showLargePointTable
+    },
+    getTotalScore(team){
+      team.total = 0
+      team.history.forEach(score => {
+        total += score
+      });
+    },
   }
 }
 </script>
@@ -21,6 +62,59 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* border: 1px solid black; */
+}
+header{
+  /* border: 1px solid black; */
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+}
+body{
+  /* border: 1px solid red; */
+  flex: 50;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+footer{
+  /* border: 1px solid red; */
+  flex: 1;
+}
+h1{
+  font-family: "MonotypeOldEnglishTextW01";
+  font-size: 3em;
+  line-height: 0.3;
+}
+h2{
+  font-family: "MonotypeOldEnglishTextW01";
+  font-size: 1em;
+  line-height: 0;
+}
+#title{
+  /* border: 1px solid green; */
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+#words{
+  /* border: 1px solid red; */
+  text-align: left;
+}
+#logo{
+  /* border: 1px solid red; */
+  display: grid;
+  align-items: center;
+}
+#pointtable{
+  /* border: 1px solid red; */
+  flex: 2;
 }
 </style>
