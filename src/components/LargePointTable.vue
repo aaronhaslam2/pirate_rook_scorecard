@@ -1,7 +1,7 @@
 <template>
-    <transition name="fade" v-on:enter="toggleShowTable">
+    <transition name="fade" v-on:enter="toggleShowTable" v-on:after-leave="close">
         <div class="backdrop" v-if="showBackdrop" @click.self="toggleShowTable">
-            <transition name="bounce" v-on:after-leave="close">
+            <transition name="bounce" v-on:after-leave="toggleShowBackdrop">
                 <PointTable v-if="showTable" class="largeTable"/>
             </transition>
         </div>
@@ -21,7 +21,6 @@ export default {
             this.showBackdrop = !this.showBackdrop
         },
         toggleShowTable(){
-            console.log("here")
             this.showTable = !this.showTable
         }
     },
@@ -53,7 +52,7 @@ export default {
     font-style: normal;
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

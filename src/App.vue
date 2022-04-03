@@ -16,9 +16,11 @@
     <ScoreTable/>
   </body>
   <footer>
+    <div id="AddScoreButton" @click="toggleAddNewScoreForm">+</div>
     <h2>Official Pirate Rook Scorecard</h2>
   </footer>
 
+  <AddNewScore v-if="showAddNewScoreForm" v-bind:team1="team1" v-bind:team2="team2" @close="toggleAddNewScoreForm"/>
   <LargePointTable v-if="showLargePointTable" @close="toggleLargePointTable"/>
 </template>
 
@@ -26,6 +28,7 @@
 import PointTable from './components/PointTable.vue'
 import LargePointTable from './components/LargePointTable.vue'
 import ScoreTable from './components/ScoreTable.vue'
+import AddNewScore from './components/AddNewScore.vue'
 
 export default {
   name: 'App',
@@ -33,10 +36,12 @@ export default {
     PointTable,
     LargePointTable,
     ScoreTable,
+    AddNewScore,
   },
   data(){
     return{
       showLargePointTable: false,
+      showAddNewScoreForm: false,
       team1: {name: "Team 1", total: 6, history: [1,2,3]},
       team2: {name: "Team 2", total: 6, history: [1,2,3]},
     }
@@ -44,6 +49,9 @@ export default {
   methods: {
     toggleLargePointTable(){
       this.showLargePointTable = !this.showLargePointTable
+    },
+    toggleAddNewScoreForm(){
+      this.showAddNewScoreForm = !this.showAddNewScoreForm
     },
     getTotalScore(team){
       team.total = 0
@@ -116,5 +124,8 @@ h2{
 #pointtable{
   /* border: 1px solid red; */
   flex: 2;
+}
+#AddScoreButton{
+  font-size: 3em;
 }
 </style>
