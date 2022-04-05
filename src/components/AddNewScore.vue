@@ -3,7 +3,7 @@
         <div class="backdrop" v-if="showBackdrop" @click.self="toggleShowForm">
             <transition name="bounce" v-on:enter="focusOnFirstInput" v-on:after-leave="toggleShowBackdrop">
                 <form class="new_score" v-if="showForm">
-                    <h1>New Score</h1>
+                    <h1 id="title">New Score</h1>
                     <label >{{team1.name}}</label>
                     <input type="number" ref="firstInput">
                     <label>{{team2.name}}</label>
@@ -49,8 +49,33 @@ export default {
 
 <style>
 form{
+    margin:10vh 2vw 0 2vw;
     background: white;
-    border-radius: 10px;
-    margin: 25vh 3vw 0 3vw;
+    text-align: left;
+    /* padding: 40px; */
+    border-radius: 50px;
+}
+label{
+    color: #aaa;
+    display: inline-block;
+    margin: 25px 0 15px;
+    font-size: 0.6em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+input, select{
+    display: block;
+    padding: 10px 6px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+input[type="submit"]{
+    margin-top: 25px;
+}
+#title{
+    text-align: center;
 }
 </style>
