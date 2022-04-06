@@ -2,12 +2,12 @@
     <transition name="fade" v-on:enter="toggleShowForm" v-on:after-leave="close">
         <div class="backdrop" v-if="showBackdrop" @click.self="toggleShowForm">
             <transition name="bounce" v-on:enter="focusOnFirstInput" v-on:after-leave="toggleShowBackdrop">
-                <form class="new_score" v-if="showForm">
+                <form class="new_score" v-if="showForm" @submit.prevent="save">
                     <h1 id="title">New Score</h1>
                     <label >{{team1.name}}</label>
-                    <input type="number" ref="firstInput">
+                    <input type="number" ref="firstInput" v-model="team1NewValue" placeholder="0">
                     <label>{{team2.name}}</label>
-                    <input type="number">
+                    <input type="number" v-model="team2NewValue" placeholder="0">
                     <input type="submit" value="Save">
                 </form>
             </transition>
@@ -22,6 +22,8 @@ export default {
         return {
             showBackdrop: false,
             showForm: false,
+            team1NewValue: null,
+            team2NewValue: null
         }
     },
     methods:{
@@ -29,7 +31,14 @@ export default {
             this.$emit('close')
         },
         save(){
-            
+            if(!this.team1NewValue){
+                this.team1NewValue = 0
+            }
+            if(!this.team2NewValue){
+                this.team2NewValue = 0
+            }
+            this.$emit('save',this.team1NewValue,this.team2NewValue)
+            this.toggleShowForm()
         },
         toggleShowForm(){
             this.showForm = !this.showForm
@@ -51,8 +60,9 @@ export default {
 form{
     margin:10vh 2vw 0 2vw;
     background: white;
-    text-align: left;
-    /* padding: 40px; */
+    text-align: center;
+    align-content: center;
+    padding: 20px;
     border-radius: 50px;
 }
 label{
@@ -74,8 +84,18 @@ input, select{
 }
 input[type="submit"]{
     margin-top: 25px;
+    border-radius: 50px;
 }
 #title{
     text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 </style>
