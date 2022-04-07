@@ -20,6 +20,7 @@
     <h2>Official Pirate Rook Scorecard</h2>
   </div>
 
+  <button id="clearScoreButton" @click="clearScore">X</button>
   <AddNewScore v-if="showAddNewScoreForm" v-bind:team1="team1" v-bind:team2="team2" @close="toggleAddNewScoreForm" @save="saveNewValue"/>
   <LargePointTable v-if="showLargePointTable" @close="toggleLargePointTable"/>
 </template>
@@ -42,9 +43,8 @@ export default {
     return{
       showLargePointTable: false,
       showAddNewScoreForm: false,
-      // team1: {name: "Team 1", total: 0, history: [1,2,3,4,5,6,7,5,8,5,2,3,4,2,6,8,6,2,4,85,68,68,4,654,31,51,38,43,4,3884,38,4]},
-      team1: {name: "Team 1", total: 0, history: [1,2,3]},
-      team2: {name: "Team 2", total: 0, history: [1,2,3]},
+      team1: {name: "Team 1", total: 0, history: []},
+      team2: {name: "Team 2", total: 0, history: []},
     }
   },
   methods: {
@@ -63,6 +63,22 @@ export default {
       this.team2.history.push(team2NewValue)
       this.getTotalScore(this.team1)
       this.getTotalScore(this.team2)
+      localStorage.setItem('team1', JSON.stringify(this.team1))
+      localStorage.setItem('team2', JSON.stringify(this.team2))
+    },
+    clearScore(){
+      this.team1 = {name: "Team 1", total: 0, history: []},
+      this.team2 = {name: "Team 2", total: 0, history: []},
+      localStorage.setItem('team1', JSON.stringify(this.team1))
+      localStorage.setItem('team2', JSON.stringify(this.team2))
+    }
+  },
+  mounted(){
+    if(localStorage.getItem('team1')){
+      this.team1 = JSON.parse(localStorage.getItem('team1'))
+    }
+    if(localStorage.getItem('team2')){
+      this.team2 = JSON.parse(localStorage.getItem('team2'))
     }
   }
 }
@@ -87,6 +103,7 @@ export default {
   flex: 5;
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
 }
 #body{
   /* border: 1px solid red; */
@@ -102,9 +119,13 @@ export default {
 }
 #scoretable_team1{
   flex: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 #scoretable_team2{
   flex: 1;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 h1{
   font-family: "MonotypeOldEnglishTextW01";
@@ -139,5 +160,13 @@ h2{
 }
 #AddScoreButton{
   font-size: 3em;
+}
+#clearScoreButton{
+  background: rgba(255, 0, 0, 0.8);
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  right: 2px;
+  margin-top: 2px;
 }
 </style>

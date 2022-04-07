@@ -1,9 +1,13 @@
 <template>
-    <div id="mainContainerHistory">
+    <div class="outerTeamContainer">
         <h3 id="teamName">{{team.name}}</h3>
         <h4 id="teamTotal">{{team.total}}</h4>
         <div id="teamhistory">
-            <div class="scoreItem" v-for="score in team.history" :key="score.index">{{score}}</div>
+            <div id="teamhistory">
+                <div class="scoreItem" v-for="score in team.history" :key="score.index">
+                    <p class="score">{{score}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -15,8 +19,8 @@ export default {
 </script>
 
 <style>
-#mainContainerHistory{
-    border: 1px solid red;
+.outerTeamContainer{
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -24,19 +28,24 @@ export default {
 #teamName{
     /* border: 1px solid red; */
     flex: 1;
+    margin: 2px 0 10px 0;
 }
 #teamTotal{
     /* border: 1px solid green; */
     flex: 1;
+    margin: 2px 0 10px 0;
+    font-style: italic;
+
 }
 #teamhistory{
     /* border: 1px solid blue; */
-    flex: 1;
-    /* height: 100%; */
+    flex: 100 1 auto;
+    margin: 0;
+    height: 0px;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     min-height: 0;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -45,6 +54,15 @@ export default {
     display: none;
 }
 .scoreItem{
-    /* border: 1px solid green; */
+    border: 1px solid green;
+    margin: 2px 0 2px 0;
+    display: flex;
+    justify-content: center;
+}
+.score{
+    background: grey;
+    width: 50%;
+    border-radius: 10px;
+    margin: 2px 0 2px 0;
 }
 </style>
