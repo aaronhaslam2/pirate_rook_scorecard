@@ -49,18 +49,19 @@ export default {
     min-height: 0;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
 }
 #teamhistory::-webkit-scrollbar {
     display: none;
 }
 .scoreItem{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     margin: 2px 0 2px 0;
     display: flex;
     justify-content: center;
 }
 .score{
-    background: grey;
+    background: rgb(179, 179, 179);
     width: 50%;
     border-radius: 10px;
     margin: 2px 0 2px 0;

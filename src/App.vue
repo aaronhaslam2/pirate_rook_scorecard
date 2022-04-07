@@ -15,14 +15,14 @@
     <ScoreTable v-bind:team="team1" id="scoretable_team1"/>
     <ScoreTable v-bind:team="team2" id="scoretable_team2"/>
   </div>
-  <div id="footer">
+  <div id="footer" @touchstart.prevent="touchStart">
     <div id="AddScoreButton" @click="toggleAddNewScoreForm">+</div>
     <h2>Official Pirate Rook Scorecard</h2>
   </div>
 
-  <button id="clearScoreButton" @click="clearScore">X</button>
   <AddNewScore v-if="showAddNewScoreForm" v-bind:team1="team1" v-bind:team2="team2" @close="toggleAddNewScoreForm" @save="saveNewValue"/>
   <LargePointTable v-if="showLargePointTable" @close="toggleLargePointTable"/>
+  <div id="clearScoreButton" v-if="showClearScoreButton" @click="clearScore" >X</div>
 </template>
 
 <script>
@@ -43,6 +43,7 @@ export default {
     return{
       showLargePointTable: false,
       showAddNewScoreForm: false,
+      showClearScoreButton: false,
       team1: {name: "Team 1", total: 0, history: []},
       team2: {name: "Team 2", total: 0, history: []},
     }
@@ -67,10 +68,29 @@ export default {
       localStorage.setItem('team2', JSON.stringify(this.team2))
     },
     clearScore(){
-      this.team1 = {name: "Team 1", total: 0, history: []},
-      this.team2 = {name: "Team 2", total: 0, history: []},
+      this.team1 = {name: "Team 1", total: 0, history: []}
+      this.team2 = {name: "Team 2", total: 0, history: []}
       localStorage.setItem('team1', JSON.stringify(this.team1))
       localStorage.setItem('team2', JSON.stringify(this.team2))
+      this.showClearScoreButton = false
+    },
+    touchStart(touchEvent){
+      if (touchEvent.changedTouches.length !== 1) { // We only care if one finger is used
+          return;
+        }
+        const posYStart = touchEvent.changedTouches[0].clientY;
+        addEventListener('touchend', (touchEvent) => this.touchEnd(touchEvent, posYStart), {once: true});
+      },
+    touchEnd (touchEvent, posYStart) {
+      if (touchEvent.changedTouches.length !== 1) { // We only care if one finger is used
+        return;
+      }
+      const posYEnd = touchEvent.changedTouches[0].clientY;
+      if (posYStart < posYEnd) {
+        this.showClearScoreButton = false
+      } else if (posYStart > posYEnd) {
+        this.showClearScoreButton = true
+      }
     }
   },
   mounted(){
@@ -162,11 +182,12 @@ h2{
   font-size: 3em;
 }
 #clearScoreButton{
-  background: rgba(255, 0, 0, 0.8);
-  border-radius: 10px;
+  background: rgba(97, 26, 26, 0.8);
+  font-size: 1.5em;
+  /* border-radius: 10px; */
   color: white;
-  position: absolute;
-  right: 2px;
-  margin-top: 2px;
+  /* position: absolute; */
+  /* left: 2px; */
+  /* bottom: 2px; */
 }
 </style>
