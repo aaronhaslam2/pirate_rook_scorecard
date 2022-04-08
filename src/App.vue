@@ -18,7 +18,7 @@
   </div>
   <div id="footer">
     <div id="AddScoreButton" @click="toggleAddNewScoreForm">+</div>
-    <h2>Official Pirate Rook Scorecard</h2>
+    <h2>Official Pirate Rook Scorecard &trade;</h2>
   </div>
 
   <AddNewScore v-if="showAddNewScoreForm" v-bind:team1="team1" v-bind:team2="team2" @close="toggleAddNewScoreForm" @save="saveNewValue"/>
