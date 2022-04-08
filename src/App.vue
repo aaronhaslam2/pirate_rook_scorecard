@@ -1,5 +1,6 @@
 <template>
-  <div id="header">
+  <div id="clearScoreButton" v-if="showClearScoreButton" @click="clearScore" >Start New Game</div>
+  <div id="header" @touchstart.prevent="touchStart">
     <div id="title">
       <div id="logo">
         <img src='./assets/logo.png' style="height: 6em;"/>
@@ -15,14 +16,13 @@
     <ScoreTable v-bind:team="team1" id="scoretable_team1"/>
     <ScoreTable v-bind:team="team2" id="scoretable_team2"/>
   </div>
-  <div id="footer" @touchstart.prevent="touchStart">
+  <div id="footer">
     <div id="AddScoreButton" @click="toggleAddNewScoreForm">+</div>
     <h2>Official Pirate Rook Scorecard</h2>
   </div>
 
   <AddNewScore v-if="showAddNewScoreForm" v-bind:team1="team1" v-bind:team2="team2" @close="toggleAddNewScoreForm" @save="saveNewValue"/>
   <LargePointTable v-if="showLargePointTable" @close="toggleLargePointTable"/>
-  <div id="clearScoreButton" v-if="showClearScoreButton" @click="clearScore" >X</div>
 </template>
 
 <script>
@@ -87,9 +87,9 @@ export default {
       }
       const posYEnd = touchEvent.changedTouches[0].clientY;
       if (posYStart < posYEnd) {
-        this.showClearScoreButton = false
-      } else if (posYStart > posYEnd) {
         this.showClearScoreButton = true
+      } else if (posYStart > posYEnd) {
+        this.showClearScoreButton = false
       }
     }
   },
@@ -184,8 +184,10 @@ h2{
 #clearScoreButton{
   background: rgba(97, 26, 26, 0.8);
   font-size: 1.5em;
+  vertical-align: middle;
   /* border-radius: 10px; */
   color: white;
+  height: 5vh;
   /* position: absolute; */
   /* left: 2px; */
   /* bottom: 2px; */
