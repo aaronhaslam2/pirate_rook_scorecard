@@ -61,7 +61,7 @@ export default {
     justify-content: center;
 }
 .score{
-    background: rgb(179, 179, 179);
+    /* background: rgb(179, 179, 179); */
     width: 50%;
     border-radius: 10px;
     margin: 2px 0 2px 0;
