@@ -17,7 +17,7 @@
             <td>500</td>
         </tr>
         <tr>
-            <td class="red color">Red</td>
+            <td class="yellow color">Yellow</td>
             <td>120</td>
             <td>220</td>
             <td>320</td>
@@ -25,7 +25,7 @@
             <td>520</td>
         </tr>
         <tr>
-            <td class="yellow color">Yellow</td>
+            <td class="red color">Red</td>
             <td>140</td>
             <td>240</td>
             <td>340</td>
