@@ -1,10 +1,10 @@
 {
   "name": "pirate_rook_scorecard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
