@@ -152,13 +152,13 @@ export default {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 h1{
-  font-family: "MonotypeOldEnglishTextW01";
-  font-size: 3em;
-  line-height: 0.3;
+  font-family: 'Kolker Brush', cursive;
+  font-size: 5em;
+  line-height: 0;
 }
 h2{
-  font-family: "MonotypeOldEnglishTextW01";
-  font-size: 1em;
+  font-family: 'Kolker Brush', cursive;
+  font-size: 2em;
   line-height: 0;
 }
 #title{

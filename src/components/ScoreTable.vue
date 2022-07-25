@@ -2,7 +2,6 @@
     <div class="outerTeamContainer">
         <h3 id="teamName">{{team.name}}</h3>
         <hr id="totalLineBreak"/>
-        
         <div id="teamhistory">
             <div id="teamhistory">
                 <div class="scoreItem" v-for="score in team.history" :key="score.index">
