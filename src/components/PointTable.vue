@@ -59,7 +59,7 @@ export default {
 
 <style>
 table, th, td{
-    padding: 5px;
+    padding: 3px;
     margin-left: auto;
     margin-right: auto;
     font-size: 80%;
@@ -71,28 +71,30 @@ table {
 th.bid{
     background: #eee;
     border-radius: 10px;
+    text-underline-position: under;
+    text-decoration: underline;
 }
 .color{
     border-radius: 10px;
 }
 .green{
-    background: green;
-    color: white;
+    background: #2C772A;
+    color: whitesmoke;
 }
 .red{
-    background: red;
-    color: white;
+    background: #D5423D;
+    color: whitesmoke;
 }
 .yellow{
-    background: yellow;
+    background: #E9DE02;
     color: black;
 }
 .black{
-    background: black;
-    color: white;
+    background: #272325;
+    color: whitesmoke;
 }
 .no_trump{
-    background: blue;
-    color: white;
+    background: #4E5AA6;
+    color: whitesmoke;
 }
 </style>

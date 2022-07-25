@@ -1,5 +1,7 @@
 <template>
-  <div id="clearScoreButton" v-if="showClearScoreButton" @click="clearScore" >Start New Game</div>
+  <div id="clearScoreButton" v-if="showClearScoreButton" @click="clearScore" >
+    <p>New Game</p>
+  </div>
   <div id="header">
     <div id="title" @touchstart.prevent="touchStart">
       <div id="logo">
@@ -17,7 +19,9 @@
     <ScoreTable v-bind:team="team2" id="scoretable_team2"/>
   </div>
   <div id="footer">
-    <div id="AddScoreButton" @click="toggleAddNewScoreForm">+</div>
+    <div id="AddScoreButton">
+      <button class="button-33" role="button" @click="toggleAddNewScoreForm">+</button>
+    </div>
     <h2>Official Pirate Rook Scorecard</h2>
   </div>
 
@@ -179,17 +183,45 @@ h2{
   flex: 2;
 }
 #AddScoreButton{
-  font-size: 3em;
+  margin: 10px 0 20px 0;
+  /* font-size: 3em; */
 }
 #clearScoreButton{
-  background: rgba(97, 26, 26, 0.8);
-  font-size: 1.5em;
+  background: #770829;
+  font-size: 1.8em;
   vertical-align: middle;
+  padding: 1px 0 1px 0;
   /* border-radius: 10px; */
-  color: white;
-  height: 5vh;
+  color: whitesmoke;
+  /* height: 6vh; */
   /* position: absolute; */
   /* left: 2px; */
   /* bottom: 2px; */
 }
+
+/* CSS */
+.button-33 {
+  background-color: #307B28;
+  border-radius: 100px;
+  /* box-shadow: rgba(121, 206, 120, .2) 0 -25px 18px -14px inset,rgba(121, 206, 120, .15) 0 1px 2px,rgba(121, 206, 120, .15) 0 2px 4px,rgba(121, 206, 120, .15) 0 4px 8px,rgba(121, 206, 120, .15) 0 8px 16px,rgba(121, 206, 120, .15) 0 16px 32px; */
+  color: whitesmoke;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
 </style>
+
+
