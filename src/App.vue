@@ -201,7 +201,7 @@ h2{
 
 /* CSS */
 .button-33 {
-  background-color: #307B28;
+  background-color: #2c3e50;
   border-radius: 100px;
   /* box-shadow: rgba(121, 206, 120, .2) 0 -25px 18px -14px inset,rgba(121, 206, 120, .15) 0 1px 2px,rgba(121, 206, 120, .15) 0 2px 4px,rgba(121, 206, 120, .15) 0 4px 8px,rgba(121, 206, 120, .15) 0 8px 16px,rgba(121, 206, 120, .15) 0 16px 32px; */
   color: whitesmoke;
