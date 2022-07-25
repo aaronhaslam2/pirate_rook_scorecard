@@ -1,7 +1,8 @@
 <template>
     <div class="outerTeamContainer">
         <h3 id="teamName">{{team.name}}</h3>
-        <h4 id="teamTotal">{{team.total}}</h4>
+        <hr id="totalLineBreak"/>
+        
         <div id="teamhistory">
             <div id="teamhistory">
                 <div class="scoreItem" v-for="score in team.history" :key="score.index">
@@ -9,6 +10,8 @@
                 </div>
             </div>
         </div>
+        <hr id="totalLineBreak"/>
+        <h4 id="teamTotal">{{team.total}}</h4>
     </div>
 </template>
 
@@ -28,14 +31,13 @@ export default {
 #teamName{
     /* border: 1px solid red; */
     flex: 1;
-    margin: 2px 0 10px 0;
+    margin: 10px 0 0 0;
 }
 #teamTotal{
     /* border: 1px solid green; */
     flex: 1;
-    margin: 2px 0 10px 0;
-    font-style: italic;
-
+    margin: 0px 0 0px 0;
+    /* font-style: italic; */
 }
 #teamhistory{
     /* border: 1px solid blue; */
@@ -53,6 +55,10 @@ export default {
 }
 #teamhistory::-webkit-scrollbar {
     display: none;
+}
+#totalLineBreak {
+    width: 6em;
+
 }
 .scoreItem{
     /* border: 1px solid green; */
