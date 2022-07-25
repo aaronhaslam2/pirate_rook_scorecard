@@ -148,13 +148,15 @@ export default {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 h1{
-  font-family: "MonotypeOldEnglishTextW01";
-  font-size: 3em;
+  /* font-family: "MonotypeOldEnglishTextW01"; */
+  font-family: "Kolker Brush", sans-serif;
+  font-size: 4em;
   line-height: 0.3;
 }
 h2{
-  font-family: "MonotypeOldEnglishTextW01";
-  font-size: 1em;
+  /* font-family: "MonotypeOldEnglishTextW01"; */
+  font-family: "Kolker Brush", sans-serif;
+  font-size: 2em;
   line-height: 0;
 }
 #title{
