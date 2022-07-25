@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "core-js": "^3.8.3",
