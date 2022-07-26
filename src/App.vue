@@ -155,26 +155,33 @@ h1{
   font-family: 'Kolker Brush', cursive;
   font-size: 5em;
   line-height: 0;
+  border: 1px solid red;
+  margin-top: 0.3em;
+  margin-bottom: 0.5em;
 }
 h2{
   font-family: 'Kolker Brush', cursive;
   font-size: 2em;
   line-height: 0;
+  margin-bottom: 0.6em;
 }
 #title{
-  /* border: 1px solid green; */
+  border: 1px solid green;
   flex: 1;
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
+  margin: 0 0 0 0;
 }
 #words{
-  /* border: 1px solid red; */
+  border: 1px solid red;
   text-align: left;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 #logo{
-  /* border: 1px solid red; */
+  border: 1px solid red;
   display: grid;
   align-items: center;
 }
