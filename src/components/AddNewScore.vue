@@ -4,6 +4,7 @@
             <transition name="bounce" v-on:enter="focusOnFirstInput" v-on:after-leave="toggleShowBackdrop">
                 <form class="new_score" v-if="showForm" @submit.prevent="save">
                     <h1 id="title">New Score</h1>
+                    <point-table/>
                     <label >{{team1.name}}</label>
                     <input type="number" ref="firstInput" v-model="team1NewValue" placeholder="0">
                     <label>{{team2.name}}</label>
@@ -16,7 +17,9 @@
 </template>
 
 <script>
+import PointTable from './PointTable.vue'
 export default {
+  components: { PointTable },
     props:['team1','team2'],
     data(){
         return {
